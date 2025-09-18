@@ -1,0 +1,244 @@
+{
+  "players": [
+    {
+      "userId": "402331217",
+      "username": "Mike M",
+      "nickname": "Mike M",
+      "firstName": "Михайло",
+      "lastName": "Михасяк",
+      "rating": 70
+    },
+    {
+      "userId": "314792024",
+      "username": "forn1cation",
+      "nickname": "forn1cation",
+      "firstName": "Андрій",
+      "lastName": "Співак",
+      "rating": 50
+    },
+    {
+      "userId": "708964766",
+      "username": "rabotiahov",
+      "nickname": "Dmytro️ Rabotiahov",
+      "firstName": "Дмитро",
+      "lastName": "Работягов",
+      "rating": 30
+    },
+    {
+      "userId": "5227978638",
+      "username": "",
+      "nickname": "Roman Maksymets",
+      "firstName": "Роман",
+      "lastName": "Максимець",
+      "rating": 90
+    },
+    {
+      "userId": "5113285864",
+      "username": "",
+      "nickname": "Сашко Страшевський",
+      "firstName": "Сашко",
+      "lastName": "Страшевський",
+      "rating": 50
+    },
+    {
+      "userId": "531159114",
+      "username": "",
+      "nickname": "Ievhen Kost",
+      "firstName": "Євген",
+      "lastName": "Кость",
+      "rating": 75
+    },
+    {
+      "userId": "1207008062",
+      "username": "therion2901",
+      "nickname": "Yuriy Tychenko",
+      "firstName": "Юрій",
+      "lastName": "Тиченко",
+      "rating": 75
+    },
+    {
+      "userId": "918736429",
+      "username": "",
+      "nickname": "Oleksandr Pavlichko",
+      "firstName": "Олександр",
+      "lastName": "Павлічко",
+      "rating": 50
+    },
+    {
+      "userId": "798195161",
+      "username": "",
+      "nickname": "Андрій С",
+      "firstName": "Андрій",
+      "lastName": "Согор",
+      "rating": 50
+    },
+    {
+      "userId": "366405369",
+      "username": "illiamishchenko",
+      "nickname": "Illia M",
+      "firstName": "Ілля",
+      "lastName": "Міщенко",
+      "rating": 80
+    },
+    {
+      "userId": "381606695",
+      "username": "NazarYar21",
+      "nickname": "Nazar",
+      "firstName": "Назарій",
+      "lastName": "Яремчук",
+      "rating": 50
+    },
+    {
+      "userId": "533763627",
+      "username": "",
+      "nickname": "P T",
+      "firstName": "Петро",
+      "lastName": "Тераз",
+      "rating": 85
+    },
+    {
+      "userId": "554685414",
+      "username": "",
+      "nickname": "Volodymyr N",
+      "firstName": "Володимир",
+      "lastName": "Нищий",
+      "rating": 70
+    },
+    {
+      "userId": "488105134",
+      "username": "Oleksandr_Olistener",
+      "nickname": "Oleksandr Kuharchuk",
+      "firstName": "Олександр",
+      "lastName": "Кухарчук",
+      "rating": 50
+    },
+    {
+      "userId": "622974859",
+      "username": "",
+      "nickname": "Володимир Українець",
+      "firstName": "Володимир",
+      "lastName": "Українець",
+      "rating": 40
+    },
+    {
+      "userId": "761553633",
+      "username": "bodkol",
+      "nickname": "Bodya",
+      "firstName": "",
+      "lastName": "",
+      "rating": 10
+    },
+    {
+      "userId": "349489768",
+      "username": "andrijpank",
+      "nickname": "Pankiv Andrii",
+      "firstName": "Голова",
+      "lastName": "і два вуха",
+      "rating": 60
+    },
+    {
+      "userId": "410720492",
+      "username": "victorshulhin",
+      "nickname": "Victor Shulhin",
+      "firstName": "Віктор",
+      "lastName": "Шульгін",
+      "rating": 10
+    },
+    {
+      "userId": "335399748",
+      "username": "n_yurchenko",
+      "nickname": "Nazar Yurchenko",
+      "firstName": "Назар",
+      "lastName": "Юрченко",
+      "rating": 65
+    },
+    {
+      "userId": "665558423",
+      "username": "rostyk_kar",
+      "nickname": "Ростислав Карабінович",
+      "firstName": "Ростик",
+      "lastName": "Карабінович",
+      "rating": 60
+    },
+    {
+      "userId": "6649322644",
+      "username": "",
+      "nickname": "IvanKep",
+      "firstName": "",
+      "lastName": "",
+      "rating": 10
+    },
+    {
+      "userId": "1137091526",
+      "username": "",
+      "nickname": "Oleh Demkiv",
+      "firstName": "Олег",
+      "lastName": "Демків",
+      "rating": 10
+    },
+    {
+      "userId": "542864571",
+      "username": "",
+      "nickname": "Михайло",
+      "firstName": "Михайло",
+      "lastName": "Хабурський",
+      "rating": 65
+    },
+    {
+      "userId": "1454312816",
+      "username": "oturch",
+      "nickname": "Oleg Turych",
+      "firstName": "Олег",
+      "lastName": "Турич",
+      "rating": 10
+    },
+    {
+      "userId": "481099043",
+      "username": "BIZONym",
+      "nickname": "Юрко Музика",
+      "firstName": "Юрко",
+      "lastName": "Музика",
+      "rating": 50
+    },
+    {
+      "userId": "254813951",
+      "username": "em0gene",
+      "nickname": "Eugene",
+      "firstName": "Євгеній",
+      "lastName": "Кулинич",
+      "rating": 60
+    },
+    {
+      "userId": "634708535",
+      "username": "Vitalix21",
+      "nickname": "Vitalik",
+      "firstName": "Віталій",
+      "lastName": "Маланкевич",
+      "rating": 65
+    },
+    {
+      "userId": "560437367",
+      "username": "AndriyBernatskiy",
+      "nickname": "Andriy Bernatskiy",
+      "firstName": "Андрій",
+      "lastName": "Бернацький",
+      "rating": 65
+    },
+    {
+      "userId": "6883825308",
+      "username": "biltarik",
+      "nickname": "Taras",
+      "firstName": "",
+      "lastName": "",
+      "rating": 10
+    },
+    {
+      "userId": "1022353388",
+      "username": "nick_frost",
+      "nickname": "Nick Frost",
+      "firstName": "Микола",
+      "lastName": "Мороз",
+      "rating": 35
+    }
+  ]
+}
