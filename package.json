@@ -5,7 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/main.js",
+    "start": "npm run build && node dist/main.js",
     "dev": "nodemon"
   },
   "author": "midas",
