@@ -1,0 +1,18 @@
+[
+  {
+    "userId": "123456789",
+    "username": "player_one",
+    "nickname": "Player One",
+    "firstName": "Іван",
+    "lastName": "Приклад",
+    "rating": 3.5
+  },
+  {
+    "userId": "987654321",
+    "username": "keeper_two",
+    "nickname": "Keeper Two",
+    "firstName": "Петро",
+    "lastName": "Воротар",
+    "rating": 4
+  }
+]
