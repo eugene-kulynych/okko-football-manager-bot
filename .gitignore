@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+
+# Local player ratings (not committed)
+data/players.json
 
 # Editor directories and files
 .vscode/*
