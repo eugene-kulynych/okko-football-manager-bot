@@ -12,8 +12,7 @@ dist
 dist-ssr
 *.local
 .env
-
-# Local player ratings (not committed)
+# Local player ratings (not committed). Encrypted data/players.enc CAN be committed.
 data/players.json
 
 # Editor directories and files
