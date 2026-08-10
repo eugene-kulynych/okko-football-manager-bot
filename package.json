@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node dist/main.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "players:encrypt": "ts-node scripts/encrypt-players.ts"
   },
   "author": "midas",
   "license": "ISC",
