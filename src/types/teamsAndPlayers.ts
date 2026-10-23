@@ -12,34 +12,6 @@ export type PollAnswers = {
   optionIds: number[];
 }[];
 
-export type PlayerLevel = "GC" | "CORE" | "OK" | "R";
-
-export type UpdatedPlayer = {
-  userId: string;
-  username: string;
-  nickname: string;
-  firstName: string;
-  lastName: string;
-  tier: PlayerLevel;
-};
-
-export const tierScoreMap: Record<PlayerLevel, number> = {
-  GC: 5,
-  CORE: 3,
-  OK: 2,
-  R: 0.5,
-};
-
-export type DivideOptions = {
-  maxPlayersPerTeam: number;
-  numTeams: number;
-};
-
-export type Team = {
-  players: UpdatedPlayer[];
-  totalScore: number;
-};
-
 type PlayerRole = "GK" | "Field";
 
 export type Player = {

@@ -1,38 +1,21 @@
 import { Composer, Scenes } from "telegraf";
 import { MyContext } from "../types/context";
 import { message } from "telegraf/filters";
-import { divideIntoTeams } from "../helpers/divideIntoTeams";
 import { generateOkkoTeamName } from "../helpers/generateRandomTeamName";
 import { balanceTeamsByAverage } from "../helpers/balanceTeams";
 
 const start = new Composer<MyContext>();
-// const teamsAmount = new Composer<MyContext>();
 const finish = new Composer<MyContext>();
 
 start.on(message("text"), async (ctx: any) => {
-  ctx.session.wizardSessionData ??= {};
-
   const responseText = `Введіть кількість команд\nНаприклад: 3
         `;
   await ctx.reply(responseText);
   return ctx.wizard.next();
 });
 
-// teamsAmount.on(message('text'), async (ctx: any) => {
-//     const teamCount = Number(ctx.message.text);
-//     ctx.session.wizardSessionData.teamCount = teamCount;
-//
-//     const responseText =
-//         `Введіть кількість гравців в команді\nНаприклад: 5
-//         `;
-//     await ctx.reply(responseText);
-//     return ctx.wizard.next();
-// })
-
 finish.on(message("text"), async (ctx: any) => {
   const teamCount = Number(ctx.message.text);
-  ctx.session.wizardSessionData.teamCount = teamCount;
-  // ctx.session.wizardSessionData.playersCount = playersCount;
 
   const responseText = `Кількість команд: ${teamCount}`;
   await ctx.reply(responseText);
@@ -49,11 +32,6 @@ finish.on(message("text"), async (ctx: any) => {
   const usedNames = new Set<string>();
 
   let message = "";
-
-  const team = res.teams;
-  const imbalance = res.imbalance;
-
-  const response = `Teams: ${JSON.stringify(team)}, Imbalance: ${imbalance}`;
 
   res.teams.forEach((team, idx) => {
     const teamName = generateOkkoTeamName(usedNames);
@@ -90,6 +68,5 @@ finish.on(message("text"), async (ctx: any) => {
 export const createTeamsScene = new Scenes.WizardScene<MyContext>(
   "createTeams",
   start,
-  // teamsAmount,
   finish,
 );
