@@ -1,20 +1,17 @@
 import "dotenv/config";
 import { session, Telegraf } from "telegraf";
-import { onStart } from "./functions/start";
+import { ADMINS, adminKeyboard, onStart } from "./functions/start";
 import { stage } from "./functions/scenes";
 import { MyContext } from "./types/context";
 import { Triggers } from "./types/triggers";
-import { PollAnswers, PollStorage } from "./types/teamsAndPlayers";
+import { PollStorage } from "./types/teamsAndPlayers";
 import { PLAYERS_V2 } from "./players/players-v2";
 
-const port = process.env.PORT || 8000;
 const token = process.env.TOKEN;
-
 
 const main = async () => {
   const bot = new Telegraf<MyContext>(token);
 
-  // bot.use(Telegraf.log());
   bot.use(session());
   bot.use(stage.middleware());
   bot.start(onStart);
@@ -23,6 +20,8 @@ const main = async () => {
   let currentPollId: string | null = null;
 
   bot.hears(Triggers.createPoll, async (ctx: MyContext) => {
+    if (!ADMINS.includes(ctx.from.id)) return;
+
     const pollMsg = await ctx.telegram.sendPoll(
       process.env.CHAT_ID,
       "⚽⚽⚽ ФУТБОЛ ⚽⚽⚽",
@@ -32,29 +31,11 @@ const main = async () => {
         allows_multiple_answers: false,
       },
     );
-    // const pollMsg = await ctx.telegram.sendPoll(
-    //     process.env.CHAT_ID,
-    //     "⚽⚽⚽ ФУТБОЛ (TEST) ⚽⚽⚽",
-    //     ["Буду (гравець) 🏃‍♂️", "Буду (кіпер) 🧤", "Не буду 💅️"],
-    //     {
-    //       is_anonymous: false,
-    //       allows_multiple_answers: false,
-    //     },
-    // );
-    // const pollMsg = await ctx.telegram.sendPoll(
-    //     process.env.CHAT_ID,
-    //     "Оновлення даних Окко Футбол+",
-    //     ["Оновити дані тут", "Оновити дані тут"],
-    //     {
-    //       is_anonymous: false,
-    //       allows_multiple_answers: false,
-    //     },
-    // );
     currentPollId = pollMsg.poll.id;
 
     // Ініціалізуємо збереження по pollId
     pollStorage[pollMsg.poll.id] = {
-      question: "Тест опитування",
+      question: "⚽⚽⚽ ФУТБОЛ ⚽⚽⚽",
       answers: [],
     };
   });
@@ -78,27 +59,11 @@ const main = async () => {
     });
 
     console.log("Оновлений список голосуючих:", pollStorage[poll_id].answers);
-    const positive = pollStorage[poll_id].answers.filter((answer) => {
-      return answer.optionIds[0] === 0;
-    });
-    const negative = pollStorage[poll_id].answers.filter((answer) => {
-      return answer.optionIds[0] > 0;
-    });
-
-    const getListOfUsers = (arr: PollAnswers): string[] => {
-      return arr.map((user) => {
-        return user.fullName.trim() || user.username.trim();
-      });
-    };
-
-    const listOfPositiveUsers = getListOfUsers(positive);
-    const listOfNegativeUsers = getListOfUsers(negative);
-
-    // await ctx.telegram.sendMessage(process.env.TEST_CHAT_ID,`За:  ${JSON.stringify(listOfPositiveUsers)}`);
-    // await ctx.telegram.sendMessage(process.env.TEST_CHAT_ID,`Проти:  ${JSON.stringify(listOfNegativeUsers)}`);
   });
 
   bot.hears(Triggers.listOfPlayers, async (ctx) => {
+    if (!ADMINS.includes(ctx.from.id)) return;
+
     const pollId = currentPollId;
     if (!pollId) {
       return ctx.reply("Поки немає голосувань.");
@@ -134,6 +99,8 @@ const main = async () => {
   });
 
   bot.hears(Triggers.createTeams, async (ctx) => {
+    if (!ADMINS.includes(ctx.from.id)) return;
+
     if (!currentPollId) {
       return ctx.reply("Спочатку створи poll.");
     }
@@ -154,8 +121,6 @@ const main = async () => {
     const goalKeepers = answers.filter((answer) =>
       answer.optionIds.includes(1),
     );
-
-    // const votedIdYes = answers.filter((answer) => answer.optionIds.includes(0));
 
     const arrayOfKeepers = goalKeepers.map((player) => {
       const gk = PLAYERS_V2.find(
@@ -196,6 +161,11 @@ const main = async () => {
     });
   });
 
+  bot.hears(Triggers.sendMessage, async (ctx) => {
+    if (!ADMINS.includes(ctx.from.id)) return;
+    await ctx.scene.enter("sendMessage");
+  });
+
   bot.catch((err) => {
     const code = (err as { response?: { error_code?: number } }).response
       ?.error_code;
@@ -206,10 +176,25 @@ const main = async () => {
     console.error("Unhandled bot error:", err);
   });
 
-  await bot.launch();
   // Enable graceful stop
   process.once("SIGINT", () => bot.stop("SIGINT"));
   process.once("SIGTERM", () => bot.stop("SIGTERM"));
+
+  // launch() резолвиться тільки після зупинки бота, тому розсилка — в onLaunch
+  await bot.launch(async () => {
+    // Оновлюємо клавіатуру адмінам після кожного деплою
+    for (const adminId of ADMINS) {
+      try {
+        await bot.telegram.sendMessage(
+          adminId,
+          "Бот оновлено ✅",
+          adminKeyboard,
+        );
+      } catch (err) {
+        console.warn(`Failed to send keyboard to admin ${adminId}:`, err);
+      }
+    }
+  });
 };
 
 main().catch((err) => {

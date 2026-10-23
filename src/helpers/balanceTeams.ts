@@ -1,13 +1,6 @@
 import { TeamV2, Player } from "../types/teamsAndPlayers";
 
 /**
- * Функція для балансування команд
- * @param {Array} keepers - Масив воротарів { name: string, rating: number }
- * @param {Array} players - Масив польових { name: string, rating: number }
- * @param {number} numTeams - Кількість команд
- */
-
-/**
  * Балансування команд за СЕРЕДНІМ рейтингом
  */
 export function balanceTeamsByAverage(
